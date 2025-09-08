@@ -1,7 +1,7 @@
 import avatarMichael from "../assets/micheal-chen.jpg";
 import avatarSarah from "../assets/sarah-johnson.jpg";
 import avatarDavid from "../assets/david-rodriguez.jpg";
-
+import Headings from './Headings'
 const testimonials = [
   {
     quote:
@@ -37,18 +37,19 @@ function Subscriber() {
     <section className="bg-slate-100 py-20 px-4 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        {/* <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             What Our Subscribers Say
           </h2>
-        </div>
+        </div> */}
+        <Headings Heading={'What Our Subscribers Say'}/>
 
         {/* Testimonials Grid */}
         <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-8">
             {testimonials.map((testimonial) => (
-              <figure key={testimonial.author.name}>
-                <figcaption className="mt-6 flex items-center gap-x-4">
+              <figure key={testimonial.author.name} className='border px-3 py-4 rounded-xl bg-white border border-[#e5e7eb] shadow-[0_1px_2px_0_rgba(0,0,0,0.05)] flex flex-col gap-3'>
+                <figcaption className="mt-6 flex items-center gap-x-4 ">
                   <img
                     className="h-10 w-10 rounded-full"
                     src={testimonial.author.imageUrl}

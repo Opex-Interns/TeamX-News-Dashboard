@@ -1,15 +1,17 @@
 import React from 'react';
+import Headings from './Headings';
 
 function Newsletter() {
   return (
     
-    <div className="flex flex-col items-center mt-10 py-24">
+    <div className="flex flex-col items-center gap-6 py-20">
       {/* Section Header */}
-      <h1 className="text-5xl font-bold text-gray-800 pb-4">Newsletter Preview</h1>
-      <p className="text-xl text-gray-500 mb-8 pb-12">See what you'll receive in your inbox</p>
+      {/* <h1 className="text-5xl font-bold text-gray-800 pb-4">Newsletter Preview</h1>
+      <p className="text-xl text-gray-500 mb-8 pb-12">See what you'll receive in your inbox</p> */}
+      <Headings Heading={'Newsletter Preview'} subHeading={`See what you'll receive in your inbox`} />
 
       {/* Newsletter Card */}
-      <div className="bg-gray-200 rounded-2xl shadow-xl p-8 max-w-xl ">
+      <div className="bg-[#f3f4f6] border border-[#D1D5DB] rounded-2xl shadow-xl p-8 max-w-xl ">
       <div className="bg-white rounded-xl shadow-lg max-w-lg w-full ">
         {/* Card Header */}
         <div className="bg-blue-600 text-white p-4 rounded-t-xl">
