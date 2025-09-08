@@ -1,21 +1,24 @@
-import Header from './Components/Header'
-import Hero from './Components/Hero'
-import LatestNews from './Components/LatestNews'
-import Ready from './Components/Ready'
-import Newsletter from './Components/Newsletter.jsx';
+import Header from "./Components/Header";
+import Hero from "./Components/Hero";
+import Ready from "./Components/Ready";
+import Choose from "./Components/Choose";
+import LatestNews from './Components/LatestNews.jsx';
+import Newsletter from "./Components/Newsletter.jsx";
+import Subscriber from "./Components/Subscriber";
+
 function App() {
-
-
   return (
     <>
-     <Header/>
-     <Hero/>
-     <LatestNews/>
-     <Newsletter/>
-     <Ready/>
      
+      <Header />
+      <Hero />
+      <Choose />
+       <LatestNews/>
+      <Newsletter />
+      <Subscriber />
+      <Ready />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
