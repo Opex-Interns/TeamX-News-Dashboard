@@ -46,12 +46,12 @@ function Subscriber() {
 
         {/* Testimonials Grid */}
         <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
-          <div className="grid grid-cols-1 bg-white gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-8">
             {testimonials.map((testimonial) => (
-              <figure key={testimonial.author.name} className='border px-3 py-4 rounded-xl bg-white border border-[#e5e7eb] shadow-[0_1px_2px_0_rgba(0,0,0,0.05)] flex flex-col gap-3'>
+              <figure key={testimonial.author.name} className='border px-3 py-4 rounded-xl bg-white border border-[#e5e7eb] shadow-[0_1px_2px_0_rgba(0,0,0,0.05)] flex flex-col gap-4'>
                 <figcaption className="mt-6 flex items-center gap-x-4 ">
                   <img
-                    className="h-10 w-10 rounded-full"
+                    className="h-12 w-12 rounded-full"
                     src={testimonial.author.imageUrl}
                     alt={`Photo of ${testimonial.author.name}`}
                   />
