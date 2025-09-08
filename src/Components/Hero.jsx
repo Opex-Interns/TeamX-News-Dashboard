@@ -4,6 +4,7 @@ function Hero() {
   return (
     <div>
       <h1>Daddy is wonderful</h1>
+      <h2>alilgvRC;OQVYOYOIEHOI</h2>
     </div>
   )
 }
