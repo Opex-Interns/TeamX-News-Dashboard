@@ -5,6 +5,7 @@ import Choose from "./Components/Choose";
 import LatestNews from './Components/LatestNews.jsx';
 import Newsletter from "./Components/Newsletter.jsx";
 import Subscriber from "./Components/Subscriber";
+import Footer from "./Components/Footer";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Newsletter />
       <Subscriber />
       <Ready />
+      <Footer />
     </>
   );
 }
