@@ -6,6 +6,7 @@ import LatestNews from './Components/LatestNews.jsx';
 import Newsletter from "./Components/Newsletter.jsx";
 import Subscriber from "./Components/Subscriber";
 
+
 function App() {
   return (
     <>

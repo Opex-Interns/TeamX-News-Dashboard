@@ -34,7 +34,7 @@ function NewsList() {
     <div className="w-[80%] mx-auto flex flex-col items-center">
       {/* News cards */}
       
-      <div className="flex flex-wrap gap-6 justify-center">
+      <div className="flex flex-wrap gap-10 justify-center">
         {displayedNews.map(news => (
           <NewsLayout
             key={news.id}
