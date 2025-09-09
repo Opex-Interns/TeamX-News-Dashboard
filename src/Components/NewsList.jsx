@@ -42,7 +42,7 @@ function NewsList() {
     }
 
     fetchNews()
-  }, [])
+  }, [apiKey])
 
   const displayedNews = showAll ? newsData : newsData.slice(0, 6)
 
