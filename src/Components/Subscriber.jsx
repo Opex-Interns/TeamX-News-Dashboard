@@ -33,6 +33,7 @@ const testimonials = [
 ];
 
 function Subscriber() {
+  
   return (
     <section className="bg-slate-100 py-20 px-4 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

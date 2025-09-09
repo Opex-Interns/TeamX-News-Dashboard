@@ -1,7 +1,11 @@
 import React from 'react';
 import Headings from './Headings';
+import DatewithDay from './Date'
 
 function Newsletter() {
+  let today = new Date();
+  let FormattedDate = DatewithDay(today);
+
   return (
     <section className="flex flex-col items-center gap-6 py-16 px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
@@ -17,7 +21,7 @@ function Newsletter() {
           {/* Card Header */}
           <div className="bg-blue-600 text-white p-4 rounded-t-xl">
             <h3 className="text-lg sm:text-xl font-semibold">📈 FinanceDaily Morning Brief</h3>
-            <span className="text-xs sm:text-sm">March 15, 2024 | Market Opening Edition</span>
+            <span className="text-xs sm:text-sm">{FormattedDate} | Market Opening Edition</span>
           </div>
 
           {/* Card Body */}
