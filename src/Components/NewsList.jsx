@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import NewsLayout from '../Layout/NewsLayout'
 
 // Helpers
@@ -28,16 +28,15 @@ function NewsList() {
   const apiKey = import.meta.env.VITE_NEWSDATA_API_KEY
   const [newsData, setNewsData] = useState([])
   const [showAll, setShowAll] = useState(false)
+  const sectionRef = useRef(null) // 👈 reference to the section
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const res = await fetch(
-         `https://newsdata.io/api/1/latest?country=ng&category=Business&apikey=${apiKey}`
-
+          `https://newsdata.io/api/1/latest?country=ng&category=Business&apikey=${apiKey}`
         )
         const data = await res.json()
-        // Newsdata.io keeps news articles in `data.results`
         setNewsData(data.results || [])
       } catch (err) {
         console.error('Error fetching news:', err)
@@ -47,10 +46,18 @@ function NewsList() {
     fetchNews()
   }, [apiKey])
 
-  const displayedNews = showAll ? newsData : newsData.slice(0, 6)
+  const handleToggle = () => {
+    if (showAll) {
+      // when collapsing, scroll back to section
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+    setShowAll(!showAll)
+  }
+
+  const displayedNews = showAll ? newsData : newsData.slice(0, 4)
 
   return (
-    <div className="w-[80%] mx-auto flex flex-col items-center">
+    <div ref={sectionRef} className="w-[80%] mx-auto flex flex-col items-center">
       {/* News cards */}
       <div className="flex flex-wrap gap-6 justify-center">
         {displayedNews.map((news) => (
@@ -69,7 +76,7 @@ function NewsList() {
       {/* Toggle Button */}
       {newsData.length > 6 && (
         <button
-          onClick={() => setShowAll(!showAll)}
+          onClick={handleToggle}
           className="mt-6 px-6 py-3 bg-[#2563eb] text-white rounded-lg hover:bg-[#1E40AF] transition"
         >
           {showAll ? 'Show Less' : 'Show More'}
