@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import NewsLayout from '../Layout/NewsLayout'
 
 // Helpers
-function timeAgo(timestamp) {
-  
-  const now = Date.now() / 1000
-  const secondsAgo = Math.floor(now - timestamp)
+function timeAgo(pubDate) {
+  const timestamp = new Date(pubDate).getTime()
+  const now = Date.now()
+  const secondsAgo = Math.floor((now - timestamp) / 1000)
 
   const minutes = Math.floor(secondsAgo / 60)
   const hours = Math.floor(secondsAgo / 3600)
@@ -18,13 +18,14 @@ function timeAgo(timestamp) {
 }
 
 function truncateText(text, wordLimit) {
+  if (!text) return ""
   const words = text.split(' ')
   if (words.length <= wordLimit) return text
   return words.slice(0, wordLimit).join(' ') + '...'
 }
 
 function NewsList() {
-  const apiKey = import.meta.env.VITE_FINNHUB_API_KEY
+  const apiKey = import.meta.env.VITE_NEWSDATA_API_KEY
   const [newsData, setNewsData] = useState([])
   const [showAll, setShowAll] = useState(false)
 
@@ -32,10 +33,12 @@ function NewsList() {
     const fetchNews = async () => {
       try {
         const res = await fetch(
-          `https://finnhub.io/api/v1/news?category=general&token=${apiKey}`
+         `https://newsdata.io/api/1/latest?country=ng&category=Business&apikey=${apiKey}`
+
         )
         const data = await res.json()
-        setNewsData(data)
+        // Newsdata.io keeps news articles in `data.results`
+        setNewsData(data.results || [])
       } catch (err) {
         console.error('Error fetching news:', err)
       }
@@ -52,13 +55,13 @@ function NewsList() {
       <div className="flex flex-wrap gap-6 justify-center">
         {displayedNews.map((news) => (
           <NewsLayout
-            key={news.url} // safer unique key
-            image={news.image}
-            category={news.category}
-            datetime={timeAgo(news.datetime)}
-            headline={truncateText(news.headline, 9)}
-            summary={truncateText(news.summary, 25)}
-            url={news.url}
+            key={news.article_id}
+            image={news.image_url}
+            category={news.source_name ? news.source_name : "General"}
+            datetime={timeAgo(news.pubDate)}
+            headline={truncateText(news.title, 9)}
+            summary={truncateText(news.description, 25)}
+            url={news.link}
           />
         ))}
       </div>
