@@ -57,7 +57,7 @@ function NewsList() {
           <NewsLayout
             key={news.article_id}
             image={news.image_url}
-            category={news.source_name ? news.source_name : "General"}
+            category={news.source_name ? news.source_name : "TOP"}
             datetime={timeAgo(news.pubDate)}
             headline={truncateText(news.title, 9)}
             summary={truncateText(news.description, 25)}
