@@ -6,6 +6,7 @@ import LatestNews from './Components/LatestNews.jsx';
 import Newsletter from "./Components/Newsletter.jsx";
 import Subscriber from "./Components/Subscriber";
 import Footer from "./Components/Footer";
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
       <Hero />
       <Choose />
        <LatestNews/>
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Subscriber />
-      <Ready />
+      {/* <Ready /> */}
       <Footer />
+       <Toaster position="bottom-center" reverseOrder={false} />
     </>
   );
 }

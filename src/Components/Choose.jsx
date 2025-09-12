@@ -34,36 +34,38 @@ const features = [
 
 function Choose() {
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 font-Roboto">
+    <section className="bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-Roboto">
       <div className="mx-auto max-w-7xl">
         <Headings
           Heading={"Why Choose FinanceDaily?"}
-          subHeading={"Everything you need to make informed investment decisions"}
+          subHeading={
+            "Everything you need to make informed investment decisions"
+          }
         />
 
         {/* Features Grid */}
-        <div className="mt-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 px-2">
+        <div className="mt-10 sm:mt-12">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.name}
-                className="bg-slate-100 p-8 text-center shadow-md rounded-xl flex flex-col items-center hover:shadow-lg transition"
+                className="bg-slate-100 p-6 sm:p-8 text-center shadow-md rounded-xl flex flex-col items-center hover:shadow-lg transition"
               >
                 {/* Icon */}
                 <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full ${feature.iconBgColor}`}
+                  className={`flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full ${feature.iconBgColor}`}
                 >
                   <feature.icon
-                    className={`h-10 w-10 ${feature.iconTextColor}`}
+                    className={`h-10 w-10 sm:h-12 sm:w-12 ${feature.iconTextColor}`}
                     aria-hidden="true"
                   />
                 </div>
 
                 {/* Card Text */}
-                <h3 className="mt-6 text-lg font-semibold text-gray-900">
+                <h3 className="mt-6 text-base sm:text-lg font-semibold text-gray-900">
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-base text-gray-600 leading-relaxed">
+                <p className="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -74,5 +76,6 @@ function Choose() {
     </section>
   );
 }
+
 
 export default Choose;
