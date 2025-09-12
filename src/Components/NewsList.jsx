@@ -58,7 +58,7 @@ function NewsList() {
     setShowAll(!showAll)
   }
 
-  const displayedNews = showAll ? newsData : newsData.slice(0, 4)
+  const displayedNews = showAll ? newsData : newsData.slice(0, 3)
 
   return (
     <div ref={sectionRef} className="w-[80%] mx-auto flex flex-col items-center">
