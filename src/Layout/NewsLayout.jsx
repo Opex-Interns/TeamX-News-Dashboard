@@ -7,7 +7,8 @@ function NewsLayout(props) {
         {/* Image */}
         <img
           src={props.image}
-          alt={props.headline}
+          alt={props.headline
+          }
           className="object-cover h-48 w-full"
         />
 

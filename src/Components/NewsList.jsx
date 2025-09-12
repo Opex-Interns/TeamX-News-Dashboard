@@ -3,20 +3,25 @@ import NewsLayout from '../Layout/NewsLayout'
 import api from "../api/axios"
 
 // Helpers
-function timeAgo(pubDate) {
-  const timestamp = new Date(pubDate).getTime()
-  const now = Date.now()
-  const secondsAgo = Math.floor((now - timestamp) / 1000)
+// ✅ Updated timeAgo to handle UNIX seconds directly
+function timeAgo(unixSeconds) {
+  if (!unixSeconds) return "";
 
-  const minutes = Math.floor(secondsAgo / 60)
-  const hours = Math.floor(secondsAgo / 3600)
-  const days = Math.floor(secondsAgo / 86400)
+  const timestamp = unixSeconds * 1000; // convert seconds → ms
+  const now = Date.now();
+  const secondsAgo = Math.floor((now - timestamp) / 1000);
 
-  if (secondsAgo < 60) return `${secondsAgo} seconds ago`
-  if (minutes < 60) return `${minutes} minutes ago`
-  if (hours < 24) return `${hours} hours ago`
-  return `${days} days ago`
+  const minutes = Math.floor(secondsAgo / 60);
+  const hours = Math.floor(secondsAgo / 3600);
+  const days = Math.floor(secondsAgo / 86400);
+
+  if (secondsAgo < 60) return `${secondsAgo} seconds ago`;
+  if (minutes < 60) return `${minutes} minutes ago`;
+  if (hours < 24) return `${hours} hours ago`;
+  return `${days} days ago`;
 }
+
+
 
 function truncateText(text, wordLimit) {
   if (!text) return ""
@@ -69,15 +74,15 @@ function NewsList() {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
   {displayedNews.map((news) => (
-    <NewsLayout
-      key={news._id}
-      image={news.image}
-      category={news.category || "Finance"}
-      datetime={timeAgo(news.pubDate)}
-      headline={truncateText(news.headline, 9)}
-      summary={truncateText(news.summary, 25)}
-      url={news.url}
-    />
+  <NewsLayout
+  key={news._id}
+  image={news.image}
+  category={news.source || "Finance"}
+  datetime={timeAgo(news.datetime)}   // ✅ use news.datetime not pubDate
+  headline={truncateText(news.headline, 9)}
+  summary={truncateText(news.summary, 25)}
+  url={news.url}
+/>
   ))}
 </div>
 
