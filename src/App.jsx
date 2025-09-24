@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
 import Ready from "./Components/Ready";
@@ -10,13 +11,29 @@ import { Toaster } from 'react-hot-toast';
 
 
 function App() {
+  const latestNewsRef = useRef(null)
+    useEffect(() => {
+    const timer = setTimeout(() => {
+      if (latestNewsRef.current) {
+        latestNewsRef.current.scrollIntoView({
+          behavior: "smooth", // smooth animation
+          block: "start"
+        });
+      }
+    }, 3000); // 5s delay
+
+    return () => clearTimeout(timer); // cleanup on unmount
+  }, []);
+
   return (
     <>
      
       <Header />
       <Hero />
       <Choose />
-       <LatestNews/>
+       <div ref={latestNewsRef}>
+        <LatestNews />
+      </div>
       {/* <Newsletter /> */}
       <Subscriber />
       {/* <Ready /> */}
